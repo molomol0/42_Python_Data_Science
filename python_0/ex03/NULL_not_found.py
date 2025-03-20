@@ -1,19 +1,21 @@
 def NULL_not_found(object: any) -> int:
 
-	type_map = {
-		list: "List",
-		tuple: "Tuple",
-		set: "Set",
-		dict: "Dict"
-	}
+    try:
+        match object:
+            case str() if object == '':
+                print('Empty:', object, type(object))
+            case float() if object != object:
+                print('Cheese:', object, type(object))
+            case bool() if object is False:
+                print('Fake:', object, type(object))
+            case int() if object == 0:
+                print('Zero:', object, type(object))
+            case None:
+                print('Nothing:', object, type(object))
+            case _:
+                print('Type not Found')
+                return 1
+        return 0
 
-	try :
-		match object:
-			case str():
-				print
-	
-	except Exception as e:
-		print (e)
-	print (type(object))
-	print (object)
-	return 1
+    except Exception:
+        return 1
