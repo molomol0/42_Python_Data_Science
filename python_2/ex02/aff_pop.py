@@ -5,6 +5,10 @@ import matplotlib.ticker as ticker
 
 
 def find_country(data, country) -> pd.DataFrame:
+    """
+    Take a data set and a country to find
+    Return the row of the country in the data
+    """
     try:
         selected_country = data[data["country"] == country]
         if selected_country.empty:
@@ -22,6 +26,10 @@ def find_country(data, country) -> pd.DataFrame:
 
 
 def print_graph(data, countries):
+    """
+    Take a data set and a tab of countries
+    Print the data of the countries
+    """
     try:
         for country in countries:
             country_data = find_country(data, country)
@@ -43,12 +51,17 @@ def print_graph(data, countries):
         plt.xlim(1800, 2050)
 
         plt.show()
+
     except Exception:
         print("Exception error")
         exit(1)
 
 
 def main():
+    """
+    Load the data
+    Print it's data of the wanted countries
+    """
     countries_searched = ["France", "Belgium"]
     data = load("../population_total.csv")
     print_graph(data, countries_searched)

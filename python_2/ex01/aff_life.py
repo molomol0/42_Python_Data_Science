@@ -4,6 +4,10 @@ import matplotlib.pyplot as plt
 
 
 def find_country(data, country) -> pd.DataFrame:
+    """
+    Take a data set and a country to find
+    Return the row of the country in the data
+    """
     try:
         selected_country = data[data["country"] == country]
         if selected_country.empty:
@@ -21,6 +25,10 @@ def find_country(data, country) -> pd.DataFrame:
 
 
 def print_graph(data):
+    """
+    Take a data set
+    Print the data in a graph
+    """
     population = data.drop(columns='country').iloc[0]
 
     population.index = population.index.astype(int)
@@ -33,6 +41,11 @@ def print_graph(data):
 
 
 def main():
+    """
+    Load the data
+    Isolate the country wanted
+    Print it's data
+    """
     country_searched = 'France'
     data = load("../life_expectancy_years.csv")
     country = find_country(data, country_searched)
